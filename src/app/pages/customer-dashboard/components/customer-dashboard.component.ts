@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CovidData } from '../models/covid.model';
+import { CovidTableData } from '../models/covid.model';
 import { CovidService } from '../services/covid.service';
-
 @Component({
   selector: 'app-customer-dashboard',
   templateUrl: './customer-dashboard.component.html',
@@ -9,15 +8,12 @@ import { CovidService } from '../services/covid.service';
   providers: [CovidService]
 })
 export class CustomerDashboardComponent implements OnInit {
-  data: CovidData[] = [];
-
+  public data: CovidTableData[] = [];
   constructor(private dataService: CovidService) { }
-
   ngOnInit(): void {
-    this.dataService.getData().subscribe((data) => {
-      this.data = data;
-      console.log(data);
+    this.dataService.getCountryData().subscribe((data) => {
+     console.log(data);
+     
     });
-
   }
 }
