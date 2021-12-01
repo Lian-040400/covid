@@ -2,9 +2,8 @@ import { today } from "../app/helpers/formatYesterdaydate";
 
 export const environment = {
   production: false,
-  baseUrl:` https://webhooks.mongodb-stitch.com/api/client/v2.0/app/covid-19-qppza/service/REST-API/incoming_webhook/countries_summary?min_date=${today}T00:00:00.000Z&hide_fields=uids,country_iso2s,country_iso3s,country_codes,combined_names`
+  baseUrl:` https://webhooks.mongodb-stitch.com`
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

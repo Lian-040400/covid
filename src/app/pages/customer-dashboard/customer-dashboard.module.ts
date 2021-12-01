@@ -8,6 +8,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSortModule } from '@angular/material/sort';
+import { CountryComponent } from './components/country/country.component';
+import { CovidService } from './services/covid.service';
+import { SafeUrlPipeModule } from 'src/app/pipes/safe-url-pipe/safe-url-pipe.module';
 
 
 
@@ -15,15 +18,20 @@ import { MatSortModule } from '@angular/material/sort';
   declarations: [
     CustomerDashboardComponent,
     CovidDataTableComponent,
+    CountryComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
+    SafeUrlPipeModule,
     CustomerDashboardRountingModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
     MatFormFieldModule
+  ],
+  providers: [
+    CovidService
   ]
 })
 export class CustomerDashboardModule { }

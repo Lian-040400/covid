@@ -1,0 +1,6 @@
+<p>country works!</p>
+<!-- <button (click)="get()">add</button> -->
+<p>{{data?.country}}</p>
+<img *ngIf="country" [src]="country.flagSrc | safeUrl: 'resourceUrl'" alt="" srcset="">
+
+
