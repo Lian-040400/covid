@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerDashboardComponent } from './components/customer-dashboard.component';
 import { CustomerDashboardRountingModule } from './customer-dashboard-routing.module';
@@ -11,7 +11,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { CountryComponent } from './components/country/country.component';
 import { CovidService } from './services/covid.service';
 import { SafeUrlPipeModule } from 'src/app/pipes/safe-url-pipe/safe-url-pipe.module';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+// import { ScaleLinear, ScalePoint, ScaleTime } from 'd3-scale';
 
 
 @NgModule({
@@ -28,10 +29,13 @@ import { SafeUrlPipeModule } from 'src/app/pipes/safe-url-pipe/safe-url-pipe.mod
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgxChartsModule,
+  
   ],
   providers: [
-    CovidService
-  ]
+    CovidService,
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class CustomerDashboardModule { }
