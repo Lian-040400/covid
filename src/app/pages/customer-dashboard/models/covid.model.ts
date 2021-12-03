@@ -7,7 +7,9 @@ export class CovidTableData {
     deaths_daily!: number;
     countryCode: string;
     country_iso2s: string;
-    country: string
+    country: string;
+    date!: string;
+    
     constructor(data: any) {
         this.id = data._id;
         this.confirmed_daily = data.confirmed_daily;
@@ -18,6 +20,8 @@ export class CovidTableData {
         this.population = data.population;
         this.countryCode = data.country_code;
         this.country = data.country;
+        this.date = data.date
+
     }
 }
 

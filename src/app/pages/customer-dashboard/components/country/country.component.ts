@@ -14,27 +14,32 @@ export class CountryComponent implements OnInit {
   data!: any;
   country!: any;
   Linechart = [];
-  multi: any[]=[
-    {
-      "name": "France",
-      "series": [
-        {
-          "name": "1990",
-          "value": 58000000
-        },
-        {
-          "name": "2010",
-          "value": 50000020
-        },
-        {
-          "name": "2011",
-          "value": 58000000
-        }
-      ]
-    }
-  ];
+  multi: any[] = []
+  // multi: any[]=[
+  //   {
+  //     "name": "France",
+  //     "series": [
+  //       {
+  //         "name": "1990",
+  //         "value": 58000000
+  //       },
+  //       {
+  //         "name": "2010",
+  //         "value": 20000000
+  //       },
+  //       {
+  //         "name": "2011",
+  //         "value": 58000000
+  //       }
+  //       , {
+  //         "name": "2012",
+  //         "value": 5000000
+  //       }
+  //     ]
+  //   }
+  // ];
   ;
-  view: any = [700, 300];
+  view: any = [900, 400];
   
   constructor(
     private activatedRouter: ActivatedRoute,
@@ -55,7 +60,7 @@ export class CountryComponent implements OnInit {
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
   xAxisLabel: string = 'Year';
-  yAxisLabel: string = 'Population';
+  yAxisLabel: string = 'Cases';
   timeline: boolean = true;
 
   colorScheme = {
@@ -75,19 +80,38 @@ export class CountryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
     this.dataService.getCountryData({
       country: this.activatedRouter.snapshot.params.name,
-      min_date: `2021-11-30T00:00:00.00Z`
+      min_date: `2021-01-01T00:00:00.00Z`
     })
       .subscribe(data => {
         this.data = data[0];
         getCountrieAsCountryOption(this.data.country).then(country => {
           this.country = country;
-          console.log(this.country);
+
+          this.multi = [this.generateSeries(country.label, data)]
+
+          console.log(this.multi);
+
         });
       });
   }
 
+ generateSeries(country: string, list: any[]) {
+    const series = [];
+    for (const item of list) {
+      const date = new Date(item.date)
+
+      if (date.getDate() === 1) {
+        series.push({name: date.toDateString(), value: item.deaths})
+      }
+    }
+  
+    return {
+      name: country,
+      series: series
+    }
+  }
 }
+
+
