@@ -1,21 +1,24 @@
-<p>country works!</p>
-<!-- <button (click)="get()">add</button> -->
-<p>{{data?.country}}</p>
-<img *ngIf="country" [src]="country.flagSrc | safeUrl: 'resourceUrl'" alt="" srcset="">
+<div class="header">
+  <img *ngIf="country" [src]="country.flagSrc | safeUrl: 'resourceUrl'" alt="" srcset="">
+  <p>{{data?.country}}</p>
+</div>
+<div class="data">
+  <div class="confirmed">
 
-<ngx-charts-line-chart
-  [view]="view"
-  [legend]="legend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxis]="xAxis"
-  [yAxis]="yAxis"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  [timeline]="timeline"
-  [results]="multi"
-  (select)="onSelect($event)"
-  (activate)="onActivate($event)"
-  (deactivate)="onDeactivate($event)"
-  >
-</ngx-charts-line-chart>
+  </div>
+  <div class="deaths">
+    <p>Coronavirus Cases:
+    </p>
+    <p>
+      
+      {{data?.confirmed}}
+    </p>
+  </div>
+</div>
+<div class="chart">
+  <ngx-charts-line-chart [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="multi" (select)="onSelect($event)"
+    (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+  </ngx-charts-line-chart>
+</div>

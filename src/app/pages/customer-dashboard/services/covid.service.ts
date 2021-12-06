@@ -11,11 +11,9 @@ interface CountryOptionI {
   flagSrc: string,
   label: string,
 };
-
 export const getCountries = async () => {
   return processUserInput(greeting);
 };
-
 export async function getCountriesAsCountryOptions(): Promise<CountryOptionI[]> {
   const countries = (await getCountries() as any).default;
   return countries.map((entity: any) => ({
@@ -23,7 +21,6 @@ export async function getCountriesAsCountryOptions(): Promise<CountryOptionI[]> 
     label: entity.country,
   }));
 }
-
 export async function getCountrieAsCountryOption(country: string): Promise<CountryOptionI> {
   country = country.toLowerCase();
   const countries = (await getCountries() as any).default;
@@ -73,12 +70,7 @@ export class CovidService {
   }
 
 }
-// ogOnInt() {
-//   const counryCode = this.getCountryDataRouter.params.countryCode
 
-//   this.service.getCountryData({country_iso2s: })
-
-// }
 
 
 
